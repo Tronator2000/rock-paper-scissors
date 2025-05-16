@@ -18,10 +18,29 @@ let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
     humanChoice = humanChoice.toLowerCase();
-    // Hay que escribir la logica de quien gana
+    if (humanChoice == computerChoice){
+        console.log("Tie!");
+    }
+    else if (
+        humanChoice=="scissors" & computerChoice=="paper" | 
+        humanChoice=="paper" & computerChoice=="rock" |
+        humanChoice=="rock" & computerChoice=="scissors"
+    ) {
+        console.log(
+            "You win!, " +
+            humanChoice.charAt(0).toUpperCase().concat(humanChoice.slice(1)) +
+            " beats " +
+            computerChoice.charAt(0).toUpperCase().concat(computerChoice.slice(1))
+        );
+        humanScore++;
+    }
+    else {
+        console.log(
+            "You lose!, " +
+            computerChoice.charAt(0).toUpperCase().concat(computerChoice.slice(1)) +
+            " beats " +
+            humanChoice.charAt(0).toUpperCase().concat(humanChoice.slice(1))
+        );
+        computerScore++;
+    }
 }
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
